@@ -1,0 +1,5 @@
+#!/bin/bash
+if [ $# -lt 3 ]; then echo "Usage $0 <date> <file> <restore-to>"; exit; fi
+
+<%= environment.join(" ") -%> duplicity <%= @_encryption -%> --restore-time $1 --file-to-restore $2 <%= @_target_url -%> $3
+
