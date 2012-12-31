@@ -6,7 +6,7 @@ set :default_environment, {
 set :puppet_site, "#{upload_dir}/#{base_dir}/manifests/site.pp"
 set :modulepath, "#{upload_dir}/#{base_dir}/modules"
 
-role :server, "stiletto.blakesmith.me"
+role :server, "blakesmith.me"
 set :user, "blake"
 set :use_sudo, true
 
@@ -15,6 +15,7 @@ task :bootstrap, :role => :server do
   sudo "apt-get update"
   sudo "apt-get -y install ruby rubygems"
   sudo "gem install puppet"
+  sudo "addgroup puppet"
 end
 
 # Example usage: NAME='test.blakesmith.me' HOSTS=ubuntu@ec2-50-17-112-94.compute-1.amazonaws.com cap rename
